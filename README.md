@@ -8,7 +8,7 @@ This repository is the implementation for our paper "[A<sup>3</sup>-FPN: Asympto
 A<sup>3</sup>-FPN employs a horizontally-spread column network that enables asymptotically global feature interaction and disentangles each level from all hierarchical representations. 
 In feature fusion, it collects supplementary content from the adjacent level to generate position-wise offsets and weights for context-aware resampling, and learns deep context reweights to improve intra-category similarity. 
 In feature reassembly, it further strengthens intra-scale discriminative feature learning and reassembles redundant features based on information content and spatial variation of feature maps. 
-Extensive experiments on MS COCO, VisDrone2019-DET and Cityscapes demonstrate that $A^3$-FPN can be easily integrated into state-of-the-art CNN and Transformer-based architectures, yielding remarkable performance gains.
+Extensive experiments on MS COCO, VisDrone2019-DET and Cityscapes demonstrate that A<sup>3</sup>-FPN can be easily integrated into state-of-the-art CNN and Transformer-based architectures, yielding remarkable performance gains.
 
 Install
 -------------
