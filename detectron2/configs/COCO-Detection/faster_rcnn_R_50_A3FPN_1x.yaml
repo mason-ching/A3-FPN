@@ -1,0 +1,42 @@
+_BASE_: "../Base-RCNN-A3FPN.yaml"
+MODEL:
+#  WEIGHTS: "detectron2://ImageNetPretrained/MSRA/R-50.pkl"
+  MASK_ON: False
+  RESNETS:
+    DEPTH: 50
+  A3FPN:
+    SQUEEZE: [1, 2, 4, 4]
+    USING_RESAMPLING: [True, True, True]
+    NORM: "SyncBN"
+    COMPRESS_CHANNELS: [16, 16, 16, 32]
+    GROUP_NUMS: [16, 16, 16, 32]
+    NUM_REPBLOCKS: 1
+    EXPANSION: 4.0
+    DCN_GROUPS: [16, 16, 16, 32]
+    DCN_CONFIG:
+      dcn_norm: 'LN'
+      offset_scale: 2.0
+      dw_kernel_size: 3
+      dcn_output_bias: True
+      center_feature_scale: False
+      remove_center: False
+      without_pointwise: False
+#  A3FPN:  # A3FPN-Lite
+#    SQUEEZE: [1, 2, 4, 8]
+#    USING_RESAMPLING: [False, False, True]
+#    NORM: "SyncBN"
+#    COMPRESS_CHANNELS: [16, 16, 16, 16]
+#    GROUP_NUMS: [16, 16, 16, 16]
+#    NUM_REPBLOCKS: 1
+#    EXPANSION: 2.0
+#    DCN_GROUPS: [16, 16, 16, 16]
+#    DCN_CONFIG:
+#      dcn_norm: 'LN'
+#      offset_scale: 1.0
+#      dw_kernel_size: 3
+#      dcn_output_bias: True
+#      center_feature_scale: False
+#      remove_center: False
+#      without_pointwise: False
+
+

@@ -1,0 +1,58 @@
+_BASE_: "../Base-RCNN-A3FPN.yaml"
+MODEL:
+  WEIGHTS: "detectron2://ImageNetPretrained/MSRA/R-50.pkl"
+  MASK_ON: True
+  RESNETS:
+    DEPTH: 50
+#    NORM: "SyncBN"
+#    FrozenBN
+  A3FPN:
+    SQUEEZE: [1, 2, 4, 4]
+    USING_RESAMPLING: [True, True, True]
+    NORM: "SyncBN"
+    COMPRESS_CHANNELS: [16, 16, 16, 32]
+    GROUP_NUMS: [16, 16, 16, 32]
+    NUM_REPBLOCKS: 1
+    EXPANSION: 4.0
+    DCN_GROUPS: [16, 16, 16, 32]
+    DCN_CONFIG:
+      dcn_norm: 'LN'
+      offset_scale: 2.0
+      dw_kernel_size: 3
+      dcn_output_bias: True
+      center_feature_scale: False
+      remove_center: False
+      without_pointwise: False
+#  A3FPN:  # A3FPN-Lite
+#    SQUEEZE: [1, 2, 4, 8]
+#    USING_RESAMPLING: [False, False, True]
+#    NORM: "SyncBN"
+#    COMPRESS_CHANNELS: [16, 16, 16, 16]
+#    GROUP_NUMS: [16, 16, 16, 16]
+#    NUM_REPBLOCKS: 1
+#    EXPANSION: 2.0
+#    DCN_GROUPS: [16, 16, 16, 16]
+#    DCN_CONFIG:
+#      dcn_norm: 'LN'
+#      offset_scale: 1.0
+#      dw_kernel_size: 3
+#      dcn_output_bias: True
+#      center_feature_scale: False
+#      remove_center: False
+#      without_pointwise: False
+DATALOADER:
+  NUM_WORKERS: 4
+SOLVER:
+  IMS_PER_BATCH: 2
+  BASE_LR: 0.02
+  STEPS: (210000, 250000)
+  MAX_ITER: 270000
+  WARMUP_ITERS: 1000
+  CHECKPOINT_PERIOD: 500
+  MAX_TO_KEEP: 3
+OUTPUT_DIR: "detectron2_weight/mask-rcnn-a3fpn-r50-coco"
+TEST:
+  EVAL_PERIOD: 5000
+  VAL_METRIC: "segm/AP"
+VIS_PERIOD: 5000
+WRITER_PERIOD: 20
