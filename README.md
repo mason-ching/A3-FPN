@@ -65,10 +65,10 @@ Results
 | [Mask2Former + A<sup>3</sup>-FPN](mask2former/configs/coco/instance-segmentation/a3fpn_mask2former_R50_bs16_50ep.yaml) | ResNet-50 | 50 Epoch | -                | 44.28             | [Model]() |
 
 #### Cityscapes Semantic Segmentation
-| Model                                                                                                                       | Backbone  | Lr Sched | AP<sub>s.s.</sub> | AP<sub>m.s.</sub> | Weight    |
-|-----------------------------------------------------------------------------------------------------------------------------|-----------|----------|-------------------|-------------------|-----------|
-| [UperNet + A<sup>3</sup>-FPN](mmsegmentation/configs/a3fpn/a3fpn_r50_4xb2-80k_cityscapes-512x1024.py)                       | ResNet-50 | 80k      | 79.65             | 81.22             | [Model]() |
-| [Mask2Former + A<sup>3</sup>-FPN](mask2former/configs/cityscapes/semantic-segmentation/a3fpn_mask2former_R50_bs16_90k.yaml) | ResNet-50 | 90k      | 81.13             | -                 | [Model]() |
+| Model                                                                                                                       | Backbone  | Lr Sched | mIoU<sub>s.s.</sub> | mIoU<sub>m.s.</sub> | Weight    |
+|-----------------------------------------------------------------------------------------------------------------------------|-----------|----------|---------------------|---------------------|-----------|
+| [UperNet + A<sup>3</sup>-FPN](mmsegmentation/configs/a3fpn/a3fpn_r50_4xb2-80k_cityscapes-512x1024.py)                       | ResNet-50 | 80k      | 79.65               | 81.22               | [Model]() |
+| [Mask2Former + A<sup>3</sup>-FPN](mask2former/configs/cityscapes/semantic-segmentation/a3fpn_mask2former_R50_bs16_90k.yaml) | ResNet-50 | 90k      | 81.13               | -                   | [Model]() |
 
 Citation
 ------------
