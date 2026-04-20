@@ -4,7 +4,7 @@ A<sup>3</sup>-FPN: Asymptotic Content-Aware Pyramid Attention Network for Dense 
   <img src="assets/a3fpn.png" width="800"/>
 </p
 
-This repository is the implementation for our paper "[A<sup>3</sup>-FPN: Asymptotic Content-Aware Pyramid Attention Network for Dense Visual Prediction]()".
+This repository is the implementation for our paper "[A<sup>3</sup>-FPN: Asymptotic Content-Aware Pyramid Attention Network for Dense Visual Prediction](https://doi.org/10.48550/arXiv.2604.10210)".
 A<sup>3</sup>-FPN employs a horizontally-spread column network that enables asymptotically global feature interaction and disentangles each level from all hierarchical representations. 
 In feature fusion, it collects supplementary content from the adjacent level to generate position-wise offsets and weights for context-aware resampling, and learns deep context reweights to improve intra-category similarity. 
 In feature reassembly, it further strengthens intra-scale discriminative feature learning and reassembles redundant features based on information content and spatial variation of feature maps. 
@@ -49,30 +49,35 @@ If you want to test more models, please refer to [test.py](test.py).
 Results
 --------------
 #### PASCAL VOC Object Detection
-| Model                                                                                                  | Backbone  | Lr Sched | AP<sub>50</sub> | AP<sub>75</sub> | Weight    |
-|--------------------------------------------------------------------------------------------------------|-----------|----------|-----------------|-----------------|-----------|
-| [Faster R-CNN + A<sup>3</sup>-FPN](detectron2/configs/PascalVOC-Detection/faster_rcnn_R_50_A3FPN.yaml) | ResNet-50 | 18k      | 82.63           | 62.55           | [Model]() |
+| Model                                                                                                  | Backbone  | Lr Sched | AP<sub>50</sub> | AP<sub>75</sub> | Weight                                                                              |
+|--------------------------------------------------------------------------------------------------------|-----------|----------|-----------------|-----------------|-------------------------------------------------------------------------------------|
+| [Faster R-CNN + A<sup>3</sup>-FPN](detectron2/configs/PascalVOC-Detection/faster_rcnn_R_50_A3FPN.yaml) | ResNet-50 | 18k      | 82.63           | 62.55           | [Model](https://huggingface.co/Q-M-E/A3-FPN/resolve/main/a3fpn_faster_rcnn_voc.pth) |
 
 #### VisDrone2019-DET Object Detection
-| Model                                                                           | Backbone  | Lr Sched | AP   | AP<sub>50</sub> | AP<sub>75</sub> | Weight    |
-|---------------------------------------------------------------------------------|-----------|----------|------|-----------------|-----------------|-----------|
-| [RetinaNet + A<sup>3</sup>-FPN](mmdetection/a3fpn_retinanet_r50_visdrone_1x.py) | ResNet-50 | 1x       | 23.7 | 39.4            | 24.7            | [Model]() |
+| Model                                                                           | Backbone  | Lr Sched | AP   | AP<sub>50</sub> | AP<sub>75</sub> | Weight                                                                                        |
+|---------------------------------------------------------------------------------|-----------|----------|------|-----------------|-----------------|-----------------------------------------------------------------------------------------------|
+| [RetinaNet + A<sup>3</sup>-FPN](mmdetection/a3fpn_retinanet_r50_visdrone_1x.py) | ResNet-50 | 1x       | 23.7 | 39.4            | 24.7            | [Model](https://huggingface.co/Q-M-E/A3-FPN/resolve/main/a3fpn_retinanet_r50_visdrone_1x.pth) |
 
 #### COCO Object Detection and Instance Segmentation
-| Model                                                                                                                  | Backbone  | Lr Sched | AP<sub>box</sub> | AP<sub>mask</sub> | Weight    |
-|------------------------------------------------------------------------------------------------------------------------|-----------|----------|------------------|-------------------|-----------|
-| [Mask R-CNN + A<sup>3</sup>-FPN](detectron2/configs/COCO-InstanceSegmentation/mask_rcnn_R_50_A3FPN_3x.yaml)            | ResNet-50 | 3x       | 43.70            | 39.19             | [Model]() |
-| [Mask2Former + A<sup>3</sup>-FPN](mask2former/configs/coco/instance-segmentation/a3fpn_mask2former_R50_bs16_50ep.yaml) | ResNet-50 | 50 Epoch | -                | 44.28             | [Model]() |
+| Model                                                                                                                  | Backbone  | Lr Sched | AP<sub>box</sub> | AP<sub>mask</sub> | Weight                                                                               |
+|------------------------------------------------------------------------------------------------------------------------|-----------|----------|------------------|-------------------|--------------------------------------------------------------------------------------|
+| [Mask R-CNN + A<sup>3</sup>-FPN](detectron2/configs/COCO-InstanceSegmentation/mask_rcnn_R_50_A3FPN_3x.yaml)            | ResNet-50 | 3x       | 43.70            | 39.19             | [Model](https://huggingface.co/Q-M-E/A3-FPN/resolve/main/a3fpn_mask_rcnn_coco.pth)   |
+| [Mask2Former + A<sup>3</sup>-FPN](mask2former/configs/coco/instance-segmentation/a3fpn_mask2former_R50_bs16_50ep.yaml) | ResNet-50 | 50 Epoch | -                | 44.28             | [Model](https://huggingface.co/Q-M-E/A3-FPN/resolve/main/a3fpn_mask2former_coco.pth) |
 
 #### Cityscapes Semantic Segmentation
-| Model                                                                                                                       | Backbone  | Lr Sched | mIoU<sub>s.s.</sub> | mIoU<sub>m.s.</sub> | Weight    |
-|-----------------------------------------------------------------------------------------------------------------------------|-----------|----------|---------------------|---------------------|-----------|
-| [UperNet + A<sup>3</sup>-FPN](mmsegmentation/configs/a3fpn/a3fpn_r50_4xb2-80k_cityscapes-512x1024.py)                       | ResNet-50 | 80k      | 79.65               | 81.22               | [Model]() |
-| [Mask2Former + A<sup>3</sup>-FPN](mask2former/configs/cityscapes/semantic-segmentation/a3fpn_mask2former_R50_bs16_90k.yaml) | ResNet-50 | 90k      | 81.13               | -                   | [Model]() |
+| Model                                                                                                                       | Backbone  | Lr Sched | mIoU<sub>s.s.</sub> | mIoU<sub>m.s.</sub> | Weight                                                                                     |
+|-----------------------------------------------------------------------------------------------------------------------------|-----------|----------|---------------------|---------------------|--------------------------------------------------------------------------------------------|
+| [UperNet + A<sup>3</sup>-FPN](mmsegmentation/configs/a3fpn/a3fpn_r50_4xb2-80k_cityscapes-512x1024.py)                       | ResNet-50 | 80k      | 79.65               | 81.22               | [Model](https://huggingface.co/Q-M-E/A3-FPN/resolve/main/a3fpn_upernet_cityscapes.pth)     |
+| [Mask2Former + A<sup>3</sup>-FPN](mask2former/configs/cityscapes/semantic-segmentation/a3fpn_mask2former_R50_bs16_90k.yaml) | ResNet-50 | 90k      | 81.13               | -                   | [Model](https://huggingface.co/Q-M-E/A3-FPN/resolve/main/a3fpn_mask2former_cityscapes.pth) |
 
 Citation
 ------------
 If you find A<sup>3</sup>-FPN useful in your research, please consider citing:
 ```
-
+@article{qin2026a3,
+  title={A3-FPN: Asymptotic Content-Aware Pyramid Attention Network for Dense Visual Prediction},
+  author={Qin, Meng'en and Song, Yu and Zhao, Quanling and Yang, Xiaodong and Che, Yingtao and Yang, Xiaohui},
+  journal={arXiv preprint arXiv:2604.10210},
+  year={2026}
+}
 ```
